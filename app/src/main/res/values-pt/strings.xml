@@ -34,7 +34,7 @@
     <string name="success">Sucesso</string>
     <string name="cancel">Cancelar</string>
     <string name="ok">OK</string>
-    <string name="retry">Retentar</string>
+    <string name="retry">Tentar novamente</string>
     <string name="cache">Ver versão local</string>
     <string name="settings">Ir para definições</string>
     <string name="add_custom_item">Item</string>
