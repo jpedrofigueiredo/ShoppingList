@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.janb.shoppinglist.R;
 
@@ -25,47 +27,65 @@ public class ShoppingListAdapter extends ArrayAdapter {
     private class ViewHolder{
         TextView titleText;
         TextView countText;
-        View checkLine;
+        CheckBox checkBox;
+        View checkOverlay;
     }
 
     public View getView(int position, View convertView, ViewGroup parent) {
         ViewHolder holder;
         View viewToUse = null;
-        ShoppingListItem item = (ShoppingListItem)getItem(position);
+        final ShoppingListItem item = (ShoppingListItem)getItem(position);
 
         LayoutInflater mInflater = (LayoutInflater) context
                 .getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null) {
-            holder = new ViewHolder();
-            int rowType = 0;
-            switch (rowType) {
-                case TYPE_ITEM:
+
+        int rowType = 0; // what???
+        switch (rowType) {
+            case TYPE_ITEM:
+                if (convertView == null) {
                     viewToUse = mInflater.inflate(R.layout.list_row, parent, false);
+                    holder = new ViewHolder();
+                } else {
+                    viewToUse = convertView;
+                    holder = (ViewHolder) viewToUse.getTag();
+                }
 
+                holder.titleText = (TextView) viewToUse.findViewById(R.id.row_item_title);
+                holder.countText = (TextView) viewToUse.findViewById(R.id.row_item_count);
+                holder.checkBox = (CheckBox) viewToUse.findViewById(R.id.row_item_check);
+                holder.checkOverlay = viewToUse.findViewById(R.id.row_item_check_overlay);
 
-                    holder.titleText = (TextView) viewToUse.findViewById(R.id.row_item_title);
-                    holder.countText = (TextView) viewToUse.findViewById(R.id.row_item_count);
-                    holder.checkLine = viewToUse.findViewById(R.id.row_item_check);
-                    viewToUse.setTag(holder);
-                    holder.countText.setText(String.valueOf(item.getItemCount()));
-                    if (item.getItemCount() == 1) {
-                        holder.countText.setText("");
+                holder.checkBox.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        item.toggleChecked();
+                        if (item.isChecked()) {
+                            Toast.makeText(context, context.getString(R.string.marked_for_deletion) + " " + item.getItemTitle(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    holder.titleText.setText(item.getItemTitle());
-                    if (item.isChecked()) {
-                        holder.titleText.setText(item.getItemTitle());
-                        holder.checkLine.setVisibility(View.VISIBLE);
-                    }
+                });
+
+                viewToUse.setTag(holder);
+                holder.countText.setText(String.valueOf(item.getItemCount()));
+                if (item.getItemCount() == 1) {
+                    holder.countText.setText("");
+                }
+                holder.titleText.setText(item.getItemTitle());
+                if (item.isChecked()) {
+                    holder.checkBox.setChecked(true);
+                }
             break;
             case TYPE_SEPARATOR:
-                convertView = mInflater.inflate(R.layout.list_category, parent, false);
+                if (convertView == null) {
+                    convertView = mInflater.inflate(R.layout.list_category, parent, false);
+                    holder = new ViewHolder();
+                } else {
+                    viewToUse = convertView;
+                    holder = (ViewHolder) viewToUse.getTag();
+                }
                 holder.titleText = (TextView) convertView.findViewById(R.id.textSeparator);
                 break;
 
-        }
-        } else {
-            viewToUse = convertView;
-            holder = (ViewHolder) viewToUse.getTag();
         }
 
 

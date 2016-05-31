@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ShoppingList</string>
+
+    <string name="action_clearlist">Limpar lista</string>
+    <string name="action_share">Partilhar</string>
+
+    <string name="nav_item_add_list">Nova lista</string>
+    <string name="nav_item_home">ShoppingList</string>
+    <string name="nav_item_favorites">Favoritos</string>
+    <string name="nav_item_settings">Definições</string>
+    <string name="nav_item_about">Acerca</string>
+
+    <string name="title_main">ShoppingList</string>
+    <string name="title_favorites">Favoritos</string>
+    <string name="title_about">Acerca da ShoppingList</string>
+    <string name="title_settings">Definições</string>
+    <string name="title_cached">Cópia local</string>
+
+
+    <string name="error_connect">Não foi possivel ligar a: </string>
+    <string name="error_not_found">API não acessível no servidor indicado.</string>
+    <string name="error_no_header">API não devolveu cabeçalho com a versão. (Servidor API correto?)</string>
+    <string name="error_server_error">O servidor não devolveu qualquer resposta. Possivel erro interno.</string>
+    <string name="error_auth">O servidor recusou a ligação. Verifica a configuração do servidor.</string>
+    <string name="error_response">O servidor devolveu uma resposta sem sentido!</string>
+    <string name="error_url">O URL não é válido.</string>
+    <string name="error_no_host_configured">Configurar endereço do servidor e chave de autenticação nas definições.</string>
+    <string name="error_host_not_found">Servidor não encontrado. A internet está ativada?</string>
+    <string name="error_general">Erro inesperado. É conveniente abrir issue no Github!</string>
+
+    <string name="toast_no_favorites">Sem favoritos. Adiciona alguns primeiro!</string>
+
+    <string name="success">Sucesso</string>
+    <string name="cancel">Cancelar</string>
+    <string name="ok">OK</string>
+    <string name="retry">Retentar</string>
+    <string name="cache">Ver versão local</string>
+    <string name="settings">Ir para definições</string>
+    <string name="add_custom_item">Item</string>
+
+    <string name="empty_view_favorites">Sem favoritos… Adiciona alguns primeiro!</string>
+    <string name="empty_view_list">Nada na lista… por enquanto :)</string>
+    <string name="empty_view_cache">A última vez que a lista foi carregada estava vazia.</string>
+
+    <string name="header_title" translatable="false">ShoppingList</string>
+    <string name="header_detail" translatable="false">Tu e a tua gastronomia</string>
+    <string name="github_url" translatable="false">https://github.com/GroundApps/ShoppingList</string>
+
+    <string name="new_entry">Nova entrada</string>
+    <string name="new_entry_from_favorite">Favoritos</string>
+    <string name="markFavorite">Favorito</string>
+    <string name="error_backend_version">Obrigatório: </string>
+    <string name="error_backend_version_update_notice">Versão do servidor de backend demasiado antiga!</string>
+
+    <string name="HttpUserAgent" translatable="false">ShoLiApp</string>
+    <string name="favorite_delete_notice">Pressionar prolongadamente para apagar</string>
+    <string name="favorite_delete">Apagar</string>
+    <string name="dialog_clear_confirm">Apagar a lista toda?</string>
+    <string name="dialog_clear_some_prefix_confirm">Remover</string>
+    <string name="dialog_clear_some_suffix_confirm">items?</string>
+    <string name="preferences_category_predictions">Predições</string>
+    <string name="preferences_action_clear_predictions">Apagar Predições</string>
+    <string name="preferences_action_ssl">SSL</string>
+    <string name="preferences_category_auth">Autenticação</string>
+    <string name="preferences_category_backend">Servidor de API</string>
+    <string name="preferences_action_host">Servidor</string>
+    <string name="preferences_hint_host" translatable="false">example.org/sholi/</string>
+    <string name="preferences_summary_ssl">Ativar para usar SSL\n (recomendado!)</string>
+    <string name="preferences_summary_auth">Introduz a chave de autenticação.\n (definida na instalação do backend)</string>
+    <string name="preferences_category_qr">Instalação rápida</string>
+    <string name="preferences_action_scan_qr">Digitalizar código QR</string>
+    <string name="preferences_category_backend_update">Backend Update Notifications</string>
+    <string name="preferences_action_check_for_updates">Procurar atualizações</string>
+    <string name="preferences_summary_check_for_updates">Procurar todas as semanas, no GitHub.</string>
+    <string name="toast_predictions_cleared">Predições apagadas</string>
+    <string name="preferences_action_generate_qr">Mostrar código QR</string>
+    <string name="preferences_summary_generate_qr">Mostrar código QR para transferir configuração</string>
+    <string name="toast_qr_missing_values">Não é possivel mostrar código QR. Falta servidor ou chave de autenticação.</string>
+    <string name="GITHUB_RELEASE_URL" translatable="false">https://api.github.com/repos/GroundApps/ShoppingList_Backend/releases/latest</string>
+    <string name="error_response_format">A resposta não faz sentido:</string>
+    <string name="add_custom_category">Categoria</string>
+    <string name="marked_for_deletion">Assinalado para apagar:</string>
+</resources>

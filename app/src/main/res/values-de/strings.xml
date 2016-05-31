@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">ShoppingList</string>
     <string name="cancel">Abbrechen</string>
+    <string name="nav_item_add_list">Neue liste</string>
     <string name="nav_item_about">Über</string>
     <string name="nav_item_favorites">Favoriten</string>
     <string name="nav_item_home">Liste</string>
@@ -38,7 +39,10 @@
     <string name="error_backend_version">Benötigt:</string>
     <string name="error_backend_version_update_notice">Bitte das Backend auf dem Server aktualisieren!</string>
     <string name="favorite_delete_notice">Lange tappen zum löschen</string>
+    <string name="favorite_delete">Löschen</string>
     <string name="dialog_clear_confirm">Soll die komplette Liste geleert werden?</string>
+    <string name="dialog_clear_some_prefix_confirm">Wollen Sie</string>
+    <string name="dialog_clear_some_suffix_confirm">elemente zu entfernen?</string>
     <string name="error_no_header">Der Server hat keinen Header mit der Versionsinfo gefunden. (Host richtig angegeben?)</string>
     <string name="preferences_summary_auth">Bitte das bei der Serverkonfiguration gewälte Passwort eingeben.</string>
     <string name="preferences_summary_ssl">Aktivieren falls SSL genutzt werden soll. \n (Empfohlen!)</string>
@@ -58,4 +62,5 @@
     <string name="preferences_action_generate_qr">QR Code anzeigen</string>
     <string name="toast_qr_missing_values">Kann QR Code nicht anzeigen. Host oder Auth nicht eingestellt.</string>
     <string name="error_response_format">Die Antwort des Servers ist nicht verständlich:</string>
+    <string name="marked_for_deletion">Zum löschen markiert: </string>
 </resources>

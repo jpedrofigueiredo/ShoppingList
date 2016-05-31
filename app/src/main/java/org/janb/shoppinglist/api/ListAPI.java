@@ -93,11 +93,13 @@ public class ListAPI extends AsyncTask<String, Integer, Boolean> {
 
         switch (chosenfunction){
             case FUNCTION_GETLIST:
+                Log.d("REQUEST", "listall");
                 parameters.put("function", "listall");
                 parameters.put("auth", AUTHKEY);
                 performPostCall(URL, parameters);
                 break;
             case FUNCTION_SAVEITEM:
+                Log.d("REQUEST", "save " + params[0] + "=" + params[1]);
                 parameters.put("function", "save");
                 parameters.put("auth", AUTHKEY);
                 parameters.put("item",params[0]);
@@ -105,17 +107,20 @@ public class ListAPI extends AsyncTask<String, Integer, Boolean> {
                 performPostCall(URL, parameters);
                 break;
             case FUNCTION_DELETEITEM:
+                Log.d("REQUEST", "delete " + params[0]);
                 parameters.put("function", "delete");
                 parameters.put("auth", AUTHKEY);
                 parameters.put("item",params[0]);
                 performPostCall(URL, parameters);
                 break;
             case FUNCTION_CLEARLIST:
+                Log.d("REQUEST", "clear");
                 parameters.put("function", "clear");
                 parameters.put("auth", AUTHKEY);
                 performPostCall(URL, parameters);
                 break;
             case FUNCTION_UPDATECOUNT:
+                Log.d("REQUEST", "update " + params[0] + "=" + params[1]);
                 parameters.put("function", "update");
                 parameters.put("auth", AUTHKEY);
                 parameters.put("item",params[0]);
@@ -123,12 +128,14 @@ public class ListAPI extends AsyncTask<String, Integer, Boolean> {
                 performPostCall(URL, parameters);
                 break;
             case FUNCTION_DELETE_MULTIPLE:
+                Log.d("REQUEST", "deleteMultiple " + params[0]);
                 parameters.put("function", "deleteMultiple");
                 parameters.put("auth", AUTHKEY);
                 parameters.put("jsonArray",params[0]);
                 performPostCall(URL, parameters);
                 break;
             case FUNCTION_SAVE_MULTIPLE:
+                Log.d("REQUEST", "saveMultiple " + params[0]);
                 parameters.put("function", "saveMultiple");
                 parameters.put("auth", AUTHKEY);
                 parameters.put("jsonArray",params[0]);
@@ -250,12 +257,15 @@ public class ListAPI extends AsyncTask<String, Integer, Boolean> {
                     listener.onResponse(responseHelper);
                     break;
                 case FUNCTION_DELETE_MULTIPLE:
+                    /*
                     ShoppingListItem_Multiple[] itemMultiple = gson.fromJson(response, ShoppingListItem_Multiple[].class);
                     List<ShoppingListItem_Multiple> statusList = new ArrayList<>(Arrays.asList(itemMultiple));
                     for (ShoppingListItem_Multiple item: statusList) {
                         Log.d(item.getItemTitle(), item.getError().toString());
                     }
                     responseHelper = new ResponseHelper(CONSTS.API_SUCCESS_DELETE,"Deleted Multiple Items");
+                    */
+                    responseHelper = gson.fromJson(response, ResponseHelper.class);
                     listener.onResponse(responseHelper);
                     break;
             }

@@ -51,7 +51,11 @@ public class SettingsActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Success!", Toast.LENGTH_SHORT).show();
                 refreshValues();
             } catch (Exception e){
-                Toast.makeText(getApplicationContext(),"QR Code: Wrong data!", Toast.LENGTH_SHORT).show();
+                if (e instanceof NullPointerException) {
+                    Toast.makeText(getApplicationContext(), "Quick setup cancelled", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "QR Code: Wrong data!", Toast.LENGTH_SHORT).show();
+                }
             }
         }
     }

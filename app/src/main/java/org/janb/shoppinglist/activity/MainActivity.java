@@ -23,6 +23,7 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 
 import org.janb.shoppinglist.CONSTS;
+import org.janb.shoppinglist.LOGGER;
 import org.janb.shoppinglist.R;
 import org.janb.shoppinglist.fragments.CacheListFragment;
 import org.janb.shoppinglist.fragments.FavoriteListFragment;
@@ -43,17 +44,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        LOGGER.context = getApplicationContext();
         setContentView(R.layout.activity_main);
         prefs = getSharedPreferences("settings", Context.MODE_PRIVATE);
         if (prefs.getBoolean("first_start", true)){
             openSettings();
             prefs.edit().putBoolean("first_start", false).apply();
-        } else {
-            toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            buildDrawer();
-            displayList();
         }
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        buildDrawer();
+        displayList();
     }
 
     private void buildDrawer() {
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 .withActionBarDrawerToggle(true)
                 .withActionBarDrawerToggleAnimated(false)
                 .addDrawerItems(
+                        new PrimaryDrawerItem().withName(R.string.nav_item_add_list).withTag(CONSTS.TAG_ADD_LIST).withIcon(R.drawable.ic_menu_add),
                         new PrimaryDrawerItem().withName(R.string.nav_item_home).withTag(CONSTS.TAG_LIST).withIcon(R.drawable.ic_toc_black_),
                         new PrimaryDrawerItem().withName(R.string.nav_item_favorites).withTag(CONSTS.TAG_FAVORITES).withIcon(R.drawable.ic_star_rate_black)
                 )
@@ -85,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void fragmentSelector(int tag) {
         switch (tag){
+            case CONSTS.TAG_ADD_LIST:
+                Toast.makeText(this, "Soon", Toast.LENGTH_SHORT).show();
+                break;
             case CONSTS.TAG_LIST:
                 displayList();
                 break;

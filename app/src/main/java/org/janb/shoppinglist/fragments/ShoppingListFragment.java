@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.media.Image;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -24,9 +23,9 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -37,7 +36,6 @@ import com.getbase.floatingactionbutton.FloatingActionsMenu;
 import com.google.gson.Gson;
 
 import org.janb.shoppinglist.CONSTS;
-import org.janb.shoppinglist.LOGGER;
 import org.janb.shoppinglist.R;
 import org.janb.shoppinglist.api.ListAPI;
 import org.janb.shoppinglist.api.ResponseHelper;
@@ -115,7 +113,11 @@ public class ShoppingListFragment extends ListFragment implements SwipeRefreshLa
                 plusCount.setOnClickListener(ref);
                 dialogCount.setText(String.valueOf(item.getItemCount()));
                 TextView dialogTitle = (TextView)dialog.findViewById(R.id.dialog_update_title);
-                dialogTitle.setText(item.getItemTitle());
+                if (item.getItemTitle().length() > 18) {
+                    dialogTitle.setText(item.getItemTitle().substring(0, 16) + " ...");
+                } else {
+                    dialogTitle.setText(item.getItemTitle());
+                }
                 TextView fav = (TextView)dialog.findViewById(R.id.dialog_update_favorite);
                 fav.setOnClickListener(ref);
                 if(getFavorites().contains(item.getItemTitle())){
@@ -215,6 +217,9 @@ public class ShoppingListFragment extends ListFragment implements SwipeRefreshLa
         mAdapter = new ShoppingListAdapter(getActivity(), ShoppingListItemList);
         setListAdapter(mAdapter);
         mListView.setSelectionFromTop(index, top);
+        if (clickedItem.isChecked()) {
+            Toast.makeText(getActivity(), getString(R.string.marked_for_deletion) + " " + clickedItem.getItemTitle(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void setEmptyText(CharSequence emptyText) {
@@ -561,8 +566,20 @@ public class ShoppingListFragment extends ListFragment implements SwipeRefreshLa
                             })
                             .show();
                 } else {
-                    Gson gson = new Gson();
-                    deleteMultiple(gson.toJson(delItems));
+                    final List<ShoppingListItem> finalDelItems = delItems;
+                    String content = getString(R.string.dialog_clear_some_prefix_confirm) + " " + finalDelItems.size() + " " + getString(R.string.dialog_clear_some_suffix_confirm);
+                    dialog = new MaterialDialog.Builder(getActivity())
+                            .content(content)
+                            .positiveText(getResources().getString(R.string.ok))
+                            .negativeText(getResources().getString(R.string.cancel))
+                            .callback(new MaterialDialog.ButtonCallback() {
+                                @Override
+                                public void onPositive(MaterialDialog dialog) {
+                                    Gson gson = new Gson();
+                                    deleteMultiple(gson.toJson(finalDelItems));
+                                }
+                            })
+                            .show();
                 }
                 return true;
             case R.id.action_share:

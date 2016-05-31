@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.afollestad.materialdialogs.MaterialDialog;
+
 import org.janb.shoppinglist.R;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -29,6 +31,7 @@ public class FavoriteListFragment extends ListFragment implements AdapterView.On
     private ListView mListView;
     private List<String> favorites;
     private Context context;
+    private MaterialDialog dialog;
 
     public FavoriteListFragment() {
     }
@@ -77,8 +80,19 @@ public class FavoriteListFragment extends ListFragment implements AdapterView.On
 }
 
     @Override
-    public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-        removeFromFavorites(favorites.get(position));
+    public boolean onItemLongClick(AdapterView<?> adapterView, View view, final int position, long l) {
+        dialog =new MaterialDialog.Builder(getActivity())
+                .content(context.getResources().getString(R.string.favorite_delete) + " " + favorites.get(position) + "?")
+                .positiveText(getResources().getString(R.string.ok))
+                .negativeText(getResources().getString(R.string.cancel))
+                .callback(new MaterialDialog.ButtonCallback() {
+                    @Override
+                    public void onPositive(MaterialDialog dialog) {
+                        removeFromFavorites(favorites.get(position));
+                        dialog.dismiss();
+                    }
+                })
+                .show();
         return true;
     }
 
