@@ -45,7 +45,7 @@
 
     <string name="header_title" translatable="false">ShoppingList</string>
     <string name="header_detail" translatable="false">Tu e a tua gastronomia</string>
-    <string name="github_url" translatable="false">https://github.com/GroundApps/ShoppingList</string>
+    <string name="github_url" translatable="false">https://github.com/jpedrofigueiredo/ShoppingList</string>
 
     <string name="new_entry">Nova entrada</string>
     <string name="new_entry_from_favorite">Favoritos</string>
