@@ -1,4 +1,6 @@
-# ShoppingList
+# ShoppingList 
+This is a fork of the original [ShoppingList](https://github.com/GroundApps/ShoppingList/) with several improvements on the UI, adding consistency between the same operations on different lists.
+
 <p align="center">
 Keep your shoppinglist synchronized with others in your household.<br><br>
 
