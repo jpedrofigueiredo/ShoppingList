@@ -45,7 +45,6 @@
 
     <string name="header_title" translatable="false">ShoppingList</string>
     <string name="header_detail" translatable="false">Tu e a tua gastronomia</string>
-    <string name="github_url" translatable="false">https://github.com/jpedrofigueiredo/ShoppingList</string>
 
     <string name="new_entry">Nova entrada</string>
     <string name="new_entry_from_favorite">Favoritos</string>
@@ -56,11 +55,11 @@
     <string name="HttpUserAgent" translatable="false">ShoLiApp</string>
     <string name="favorite_delete_notice">Pressionar prolongadamente para apagar</string>
     <string name="favorite_delete">Apagar</string>
-    <string name="dialog_clear_confirm">Apagar a lista toda?</string>
+    <string name="dialog_clear_confirm">Apagar tudo da lista?</string>
     <string name="dialog_clear_some_prefix_confirm">Remover</string>
     <string name="dialog_clear_some_suffix_confirm">items?</string>
     <string name="preferences_category_predictions">Predições</string>
-    <string name="preferences_action_clear_predictions">Apagar Predições</string>
+    <string name="preferences_action_clear_predictions">Limpar Predições</string>
     <string name="preferences_action_ssl">SSL</string>
     <string name="preferences_category_auth">Autenticação</string>
     <string name="preferences_category_backend">Servidor de API</string>
@@ -77,7 +76,6 @@
     <string name="preferences_action_generate_qr">Mostrar código QR</string>
     <string name="preferences_summary_generate_qr">Mostrar código QR para transferir configuração</string>
     <string name="toast_qr_missing_values">Não é possivel mostrar código QR. Falta servidor ou chave de autenticação.</string>
-    <string name="GITHUB_RELEASE_URL" translatable="false">https://api.github.com/repos/GroundApps/ShoppingList_Backend/releases/latest</string>
     <string name="error_response_format">A resposta não faz sentido:</string>
     <string name="add_custom_category">Categoria</string>
     <string name="marked_for_deletion">Assinalado para apagar:</string>
