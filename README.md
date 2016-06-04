@@ -3,14 +3,12 @@ This is a fork of the original [ShoppingList for Android](https://github.com/Gro
 
 <p align="center">
 Keep your shopping list synchronized with others in your household.<br><br>
-
-
 <img src=screenshots/1.png width=250 />
 <img src=screenshots/2.png width=250 /><br><br>
 Add favorites and add quick add them to your list.<br><br>
 <img src=screenshots/3.png width=250 />
 <img src=screenshots/4.png width=250 /><br><br>
-Select items you already bought
+Select items you already bought<br><br>
 <img src=screenshots/5.png width=250 /><br><br>
 </p>
 
